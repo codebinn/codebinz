@@ -228,25 +228,29 @@ Sub addlandetail()
             Delay 300
         End If
         
+        KeyDown "Ctrl", 1
+        KeyPress "A", 1
+        KeyUp "Ctrl", 1
+        Delay 300
     End If
 End Sub
 
 //开宝箱
 Sub kkbx()
     If iskkbx = 1 Then 
+        FindPic 150,450,1650,970,"Attachment:\gb.bmp",0.9,intX,intY
+        If intX > 0 And intY > 0 Then 
+            MoveTo intX, intY
+            Delay 100
+            LeftClick 1
+            Delay 300
+        End If
         FindPic 150,150,1587,652,"Attachment:\xzbx.bmp",0.9,intX,intY
         If intX > 0 And intY > 0 Then 
             MoveTo intX,intY
             Delay 100
             RightClick 1
             Delay 300
-            FindPic 150,450,1650,970,"Attachment:\gb.bmp",0.9,intX,intY
-            If intX > 0 And intY > 0 Then 
-                MoveTo intX, intY
-                Delay 100
-                LeftClick 1
-                Delay 300
-            End If
         End If
     End If
 End Sub
@@ -353,6 +357,7 @@ Sub zdzt()
     //等待战斗结束
     Rem zdend
     
+    /*
     XY=Plugin.Color.FindMutiColor(415,104,510,140,"00FFFF","0|1|00FFFF,0|2|00FFFF,0|3|00FFFF,0|4|00FFFF,0|5|00FFFF,0|8|00FFFF,7|0|00FFFF,7|2|00FFFF,7|4|00FFFF,7|6|00FFFF,7|8|00FFFF,11|1|FFFFFF",1)
     Call addhh()
     XY=Plugin.Color.FindMutiColor(1522,107,1615,143,"00FFFF","0|1|00FFFF,0|2|00FFFF,0|3|00FFFF,0|4|00FFFF,0|5|00FFFF,0|8|00FFFF,7|0|00FFFF,7|2|00FFFF,7|4|00FFFF,7|6|00FFFF,7|8|00FFFF,11|1|FFFFFF",1)
@@ -374,6 +379,7 @@ Sub zdzt()
     Call addhh()
     XY=Plugin.Color.FindMutiColor(1466,942,1561,978,"00FFFF","0|1|00FFFF,0|2|00FFFF,0|3|00FFFF,0|4|00FFFF,0|5|00FFFF,0|6|00FFFF,0|7|00FFFF,0|8|00FFFF,4|6|00FFFF,4|5|00FFFF,4|4|00FFFF,4|3|00FFFF,4|2|00FFFF,10|3|00FFFF,10|4|00FFFF,10|5|00FFFF",1)
     Call addhh()
+    */
     
     /*
     If istdpt = 1 Then 
@@ -1678,7 +1684,7 @@ Sub all_bj()
                 Call clicktalk()
                 Goto clickbjnpc
             Else 
-            	Delay 2000
+                Delay 2000
                 //离开边境
                 FindPic 239,280,605,424,"Attachment:\qx.bmp",0.9,intX,intY
                 If intX > 0 And intY > 0 Then 
@@ -1749,6 +1755,9 @@ Sub all_md()
     Delay 2000
     Goto mdcontinue
     Rem mdeend
+    Delay 3000
+    Call clicktalk()
+    Delay 3000
     isaddzc = 0
     isaddlan = 0
     ishagh = 0
@@ -2801,6 +2810,15 @@ Sub all_fb()
     isaddlan = 1
     ishagh = 1
     
+    MoveTo 1572, 121
+    Delay 100
+    LeftClick 1
+    Delay 500
+    KeyDown "Ctrl", 1
+    KeyPress "A", 1
+    KeyUp "Ctrl", 1
+    Delay 1000
+    
     //自动战斗改为黑暗光环
     XY=Plugin.Color.FindMutiColor(1524,20,1623,79,"FFFFFF","0|2|FFFFFF,0|4|FFFFFF,0|6|FFFFFF,0|8|FFFFFF,1|9|FFFFFF,4|9|FFFFFF,6|9|FFFFFF,8|9|FFFFFF,9|8|FFFFFF,9|6|FFFFFF,9|4|FFFFFF,9|2|FFFFFF,9|0|FFFFFF,4|-2|FFFFFF,14|5|FFFFFF,13|7|FFFFFF,17|7|FFFFFF,20|6|FFFFFF,24|6|FFFFFF,24|3|FFFFFF,29|0|FFFFFF,27|7|FFFFFF,31|6|FFFFFF,34|7|FFFFFF,44|6|FFFFFF,46|6|FFFFFF,49|2|FFFFFF,49|-1|FFFFFF",1)
     MyArray = Split(XY, "|")
@@ -2814,7 +2832,7 @@ Sub all_fb()
         Delay 100
         LeftClick 1
         Delay 1000
-        MoveTo 460, 116
+        MoveTo 460, 20
         Delay 100
         LeftClick 1
         Delay 1000
@@ -2825,7 +2843,7 @@ Sub all_fb()
     Rem startsearch
     //Call search_fb100()
     //Call search_fb90()
-    //Call search_fb80()
+    Call search_fb80()
     Call search_fb70()
     Call search_fb60()
     Call search_fb50()
@@ -2925,7 +2943,7 @@ shiaddzc = 1
 //~~~~~~~~~~~~~~~副本选项~~~~~~~~~~~~~~~
 Rem topstart
 
-//Call all_fb()
+Call all_fb()
 
 //~~~~~~~~~~~~~~~灵狐选项~~~~~~~~~~~~~~~
 
@@ -2957,6 +2975,10 @@ Call zdzt()
 */
 
 
+//~~~~~~~~~~~~~~~蛮洞选项~~~~~~~~~~~~~~~
+
+//Call all_md()
+
 //~~~~~~~~~~~~~~~边境选项~~~~~~~~~~~~~~~
 
 //Call all_bj()
@@ -2968,9 +2990,7 @@ Call zdzt()
 
 //Call all_qb()
 
-//~~~~~~~~~~~~~~~蛮洞选项~~~~~~~~~~~~~~~
 
-Call all_md()
 
 //~~~~~~~~~~~~~~~修炼选项~~~~~~~~~~~~~~~
 
