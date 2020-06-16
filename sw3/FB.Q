@@ -221,7 +221,7 @@ Sub addlandetail()
         
         //忠诚度
         //If isaddzc = 1 Then 
-        If shiaddzc Mod 10 = 1 Then 
+        If shiaddzc Mod 5 = 1 Then 
             MoveTo X + 614, Y + 64
             Delay 100
             RightClick 1
@@ -257,8 +257,16 @@ End Sub
 
 //补篮
 Sub addlan()
+	MoveTo 468, 22
+    Delay 100
+    LeftClick 1
+    Delay 300
     XY=Plugin.Color.FindMutiColor(0,0,159,35,"000000","1|0|000000,2|0|000000,1|3|000000,2|3|000000,6|-1|000000,8|-1|000000,10|-1|000000,6|2|000000,8|2|000000,10|2|000000,6|5|000000,8|5|000000,10|5|000000,15|1|000000,26|1|000000,19|-2|000000,20|4|000000,21|8|000000,17|9|000000",1)
     Call addlandetail()
+    MoveTo 1571, 124
+    Delay 100
+    LeftClick 1
+    Delay 300
     XY=Plugin.Color.FindMutiColor(1089,0,1275,43,"000000","1|0|000000,2|0|000000,1|3|000000,2|3|000000,6|-1|000000,8|-1|000000,10|-1|000000,6|2|000000,8|2|000000,10|2|000000,6|5|000000,8|5|000000,10|5|000000,15|1|000000,26|1|000000,19|-2|000000,20|4|000000,21|8|000000,17|9|000000",1)
     Call kkbx()
     Call addlandetail()
@@ -1782,7 +1790,7 @@ End Sub
 
 //打开地图
 Sub gotofy()
-/*
+
     //去琉璃90
     XY = Plugin.Color.FindMutiColor(0, 0, 200, 100, "97F3F7", "0|4|97F3F7,14|4|97F3F7,24|3|97F3F7,32|3|97F3F7,43|6|97F3F7,49|10|97F3F7,56|8|97F3F7,62|7|97F3F7,80|9|97F3F7,75|9|97F3F7,69|9|97F3F7,86|10|97F3F7,92|10|97F3F7,92|2|97F3F7,84|1|97F3F7", 1)
     MyArray = Split(XY, "|")
@@ -1823,7 +1831,7 @@ Sub gotofy()
         Call waitmapclose()
     End If
 
-
+/*
     //去寒冰一100
     XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|1|97F3F7,11|0|97F3F7,11|1|97F3F7,14|9|97F3F7,15|6|97F3F7,17|2|97F3F7,19|2|97F3F7,18|6|97F3F7,21|6|97F3F7,21|-1|97F3F7,21|10|97F3F7,25|8|97F3F7,28|1|97F3F7,30|0|97F3F7,37|0|97F3F7,30|3|97F3F7,29|8|97F3F7,38|9|97F3F7,42|4|97F3F7,48|4|97F3F7,53|4|97F3F7",1)
     MyArray = Split(XY, "|")
@@ -1910,7 +1918,7 @@ Sub gotofy()
         
     End If
  */  
-    
+/*      
     //去北冥80
     XY=Plugin.Color.FindMutiColor(0,0,200,100,"97F3F7","0|3|97F3F7,-4|9|97F3F7,-5|9|97F3F7,0|10|97F3F7,0|7|97F3F7,0|4|97F3F7,1|4|97F3F7,3|3|97F3F7,7|1|97F3F7,7|2|97F3F7,18|1|97F3F7,18|2|97F3F7,4|10|97F3F7,2|11|97F3F7",1)
     MyArray = Split(XY, "|")
@@ -1938,7 +1946,7 @@ Sub gotofy()
         Delay 100
         Call waitmapclose()
     End If
-/*    
+  
 */     
     
 End Sub
@@ -2564,18 +2572,13 @@ Sub all_dy()
     isend = 0
     iskbx=0
     Rem dy
-    FindPic 218,190,1791,903,"Attachment:\dyqd.bmp",0.9,intX,intY
+    FindPic 218,190,1891,903,"Attachment:\xzbx.bmp",0.9,intX,intY
     If intX > 0 And intY > 0 Then 
-        MoveTo intX, intY
+        MoveTo intX + 64, intY + 111
         Delay 100
         LeftClick 1
-        Delay 50
-        Goto dy
-    End If
-    Delay 50
-    FindPic 218,190,1791,903,"Attachment:\dyqdz.bmp",0.9,intX,intY
-    If intX > 0 And intY > 0 Then 
-        MoveTo intX, intY
+        Delay 300
+        MoveTo intX + 272, intY - 28
         Delay 100
         LeftClick 1
         Delay 50
@@ -2604,16 +2607,6 @@ Sub all_dy()
         Goto dy
     End If
     Delay 50
-    FindPic 218,190,1791,903,"Attachment:\pg.bmp",0.9,intX,intY
-    If intX > 0 And intY > 0 Then 
-        MoveTo intX, intY
-        Delay 100
-        LeftClick 1
-        Delay 50
-        iskbx=iskbx+1
-        Goto dy
-    End If
-    Delay 50
     FindPic 218,190,1791,903,"Attachment:\sg.bmp",0.9,intX,intY
     If intX > 0 And intY > 0 Then 
         MoveTo intX, intY
@@ -2624,19 +2617,35 @@ Sub all_dy()
         Goto dy
     End If
     Delay 50
-    FindPic 218,190,1891,903,"Attachment:\xzbx.bmp",0.9,intX,intY
+    FindPic 218,190,1791,903,"Attachment:\dyqd.bmp",0.9,intX,intY
     If intX > 0 And intY > 0 Then 
-        MoveTo intX + 50, intY + 60
-        Delay 100
-        LeftClick 1
-        Delay 300
-        MoveTo intX + 272, intY - 28
+        MoveTo intX, intY
         Delay 100
         LeftClick 1
         Delay 50
         Goto dy
     End If
     Delay 50
+    FindPic 218,190,1791,903,"Attachment:\dyqdz.bmp",0.9,intX,intY
+    If intX > 0 And intY > 0 Then 
+        MoveTo intX, intY
+        Delay 100
+        LeftClick 1
+        Delay 50
+        Goto dy
+    End If
+    Delay 50
+    FindPic 218,190,1791,903,"Attachment:\pg.bmp",0.9,intX,intY
+    If intX > 0 And intY > 0 Then 
+        MoveTo intX, intY
+        Delay 100
+        LeftClick 1
+        Delay 50
+        iskbx=iskbx+1
+        Goto dy
+    End If
+    Delay 50
+    
     FindPic 218,140,1791,903,"Attachment:\sh.bmp",0.9,intX,intY
     If intX > 0 And intY > 0 Then 
         MoveTo intX, intY
@@ -2873,7 +2882,7 @@ Sub all_fb()
     X = CInt(MyArray(0)) : Y = CInt(MyArray(1))
     If X > 0 And Y > 0 Then 
         MoveTo X + 32, Y + 26
-        Delay 100
+        Delay 200
         LeftClick 1
         Delay 1000
         MoveTo X + 32, Y + 73
@@ -2891,10 +2900,10 @@ Sub all_fb()
     Rem startsearch
     //Call search_fb100()
     //Call search_fb90()
-    Call search_fb80()
-    Call search_fb70()
-    Call search_fb60()
+    //Call search_fb80()
+    //Call search_fb70()
     Call search_fb50()
+    Call search_fb60()
 
     //滚动查找
     If havefb = 0 And roll=0 Then 
@@ -2991,39 +3000,42 @@ shiaddzc = 1
 //~~~~~~~~~~~~~~~副本选项~~~~~~~~~~~~~~~
 Rem topstart
 
-//Call all_fb()
+Call all_fb()
 
 //~~~~~~~~~~~~~~~封妖选项~~~~~~~~~~~~~~~
 
 //Call all_fy()
-
-//~~~~~~~~~~~~~~~边境选项~~~~~~~~~~~~~~~
-
-//Call all_bj()
 
 //~~~~~~~~~~~~~~~捉鬼选项~~~~~~~~~~~~~~~
 
 //Call all_zg()
 
 //~~~~~~~~~~~~~~~灵狐选项~~~~~~~~~~~~~~~
-
-//Call all_lh()
+/*
+Call all_lh()
 
 //~~~~~~~~~~~~~~~旗包选项~~~~~~~~~~~~~~~
 
-//Call all_qb()
+Call all_qb()
+
+//~~~~~~~~~~~~~~~边境选项~~~~~~~~~~~~~~~
+
+Call all_bj()
+*/
 
 
 
+//~~~~~~~~~~~~~~~蛮洞选项~~~~~~~~~~~~~~~
 
-//~~~~~~~~~~~~~~~钓鱼选项~~~~~~~~~~~~~~~买鱼竿
+//Call all_md()
+
+//~~~~~~~~~~~~~~~钓鱼选项~~~~~~~~~~~~~~~
 
 //Call all_dy()
 
 //~~~~~~~~~~~~~~~~~关机~~~~~~~~~~~~~~~~~
 
 //Call close_computer()
-
 
 
 
@@ -3034,12 +3046,6 @@ Call zdzt()
 */
 
 
-//~~~~~~~~~~~~~~~蛮洞选项~~~~~~~~~~~~~~~
-
-//Call all_md()
-
-
-
 //~~~~~~~~~~~~~~~修炼选项~~~~~~~~~~~~~~~
 
 //Call all_xl()
@@ -3047,5 +3053,5 @@ Call zdzt()
 
 //~~~~~~~~~~~~~~~小伙伴选项~~~~~~~~~~~~~~~
 
-Call all_xhb()
+//Call all_xhb()
 
