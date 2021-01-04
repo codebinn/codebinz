@@ -10,7 +10,7 @@ RunOnce=1
 EnableWindow=
 MacroID=e11a677a-dbeb-4f57-9b0b-00eb5dd3e528
 Description=wangke
-Enable=1
+Enable=0
 AutoRun=0
 [Repeat]
 Type=0
