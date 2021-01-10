@@ -3144,7 +3144,7 @@ Call all_fy()
 
 //~~~~~~~~~~~~~~~µˆ”„—°œÓ~~~~~~~~~~~~~~~
 
-Call all_dy()
+//Call all_dy()
 
 
 
@@ -3161,7 +3161,7 @@ Call all_dy()
 
 
 //~~~~~~~~~~~~~~~æªº”¿∂~~~~~~~~~~~~~~~
-/*
+/**/
 isaddlan = 1
 Rem jjl
 FindPic 710,541,814,589,"Attachment:\zdzt.bmp",0.9,intX,intY
@@ -3172,7 +3172,7 @@ Else
 Delay 1000
 Goto jjl
 End If
-*/
+
 
 
 

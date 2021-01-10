@@ -23,29 +23,11 @@ SetupOCXFile=
 [Comment]
 
 [Script]
-Sub aa(c)
-	a = 1
-	//Call bb(a)
-	Call c()
-End Sub
 
-Function bb()
-	MessageBox "bb"
-End Function
-
-Function cc(ddd)
-	MessageBox "111"
-	Call ddd()
-	MessageBox "222"
-	ddd
+Function aa(x,y)
+	aa = 1+x+y
+	
 End Function
 
 
-
-Function dd()
-	dd=bb
-	MessageBox "dd"
-End Function
-
-
-Call cc(dd)
+TracePrint aa(-30,-50)
