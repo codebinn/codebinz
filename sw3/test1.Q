@@ -24,10 +24,11 @@ SetupOCXFile=
 
 [Script]
 
-Function aa(x,y)
-	aa = 1+x+y
-	
-End Function
 
-
-TracePrint aa(-30,-50)
+i=1
+For 5
+	i=i+1
+	If i = 3 Then 
+		break
+	End If
+Next
