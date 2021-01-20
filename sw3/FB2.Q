@@ -50,17 +50,17 @@ Sub selectfb()
     search100=1
     //Call search_fb("Attachment:\100fb.bmp")
     search100=0
-    //Call search_fb("Attachment:\90fb.bmp")
-    Call search_fb("Attachment:\80fb.bmp")
-    Call search_fb("Attachment:\70fb.bmp")
+    Call search_fb("Attachment:\90fb.bmp")
+    //Call search_fb("Attachment:\80fb.bmp")
     oksell=0
+    //Call search_fb("Attachment:\70fb.bmp")
     Call search_fb("Attachment:\60fb.bmp")
-    Call search_fb("Attachment:\50fb.bmp")
+    //Call search_fb("Attachment:\50fb.bmp")
 End Sub
 
 //激活
 Function activite_detail()
-	For 15
+	For 110
         Delay 60000
     Next
 End Function
@@ -70,17 +70,17 @@ Function kfs()
 	iskfs = 1
 End Function
 
-//~~~~~~~~~~~~~~~初始化~~~~~~~~~~~~~~~
-Call init()
-
 //~~~~~~~~~~~~~~~激活~~~~~~~~~~~~~~~
 //Call activite()
+
+//~~~~~~~~~~~~~~~初始化~~~~~~~~~~~~~~~
+Call init()
 /*
 //~~~~~~~~~~~~~~~钓鱼~~~~~~~~~~~~~~~
 Call all_dy()
 
 //~~~~~~~~~~~~~~~副本~~~~~~~~~~~~~~~
-//Call all_fb()
+Call all_fb()
 
 //~~~~~~~~~~~~~~~灵狐~~~~~~~~~~~~~~~
 Call all_lh()
@@ -92,23 +92,24 @@ Call all_bj()
 Call all_qb()
 
 //~~~~~~~~~~~~~~~~~换修、卖活力、卖全部~~~~~~~~~~~~~~~~~
-Call all_huanxiu()
+Call clean()
+Call all_huanxiu()*/
 Call sell_hl()
 Call sell_all()
-*/
+
 /*
 //~~~~~~~~~~~~~~~~~答题~~~~~~~~~~~~~~~~~
 Call all_answer()
-
 //~~~~~~~~~~~~~~~封妖~~~~~~~~~~~~~~~
 Call all_fy()
-
-//~~~~~~~~~~~~~~~捉鬼、卷宗~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~捉鬼~~~~~~~~~~~~~~~
 Call all_zg()
+//~~~~~~~~~~~~~~~卷宗~~~~~~~~~~~~~~~
 Call handup_jz()
-//~~~~~~~~~~~~~~~~~关机~~~~~~~~~~~~~~~~~
-Call close_computer()
 */
+//~~~~~~~~~~~~~~~~~关机~~~~~~~~~~~~~~~~~
+//Call close_computer()
+
 
 
 
@@ -525,7 +526,7 @@ End Function
 
 //卖神武币和现金物品
 Function sell_all()
-	Call _sell_swb()
+	Call sell_swb()
 	Call sell_xj()
 End Function
 
@@ -572,6 +573,38 @@ Function sell_xj()
     Call clickwindow_n(1)
 End Function
 
+//卖神武币物品
+Function sell_swb()
+    n = 0
+    For 5
+    	n=n+1
+    	Call clickwindow_n(n)
+    	Call altn("O",3000)
+    	loc_ar = win_location(n)
+    	xx = 525
+    	yy = 162
+    	j=-1
+    	For 7
+    		j = j + 1
+    		y = yy + 48 * j
+    		i = - 1
+    		For 5
+    			i=i+1
+    			x = xx + 48 * i
+    			If GetPixelColor(loc_ar(0) + x, loc_ar(1) + y) = "B5B47F" Then 
+    			Else 
+    				Call moveto_lrclick_delay(loc_ar(0) + x, loc_ar(1) + y, 1, 1000)
+    				If GetPixelColor(loc_ar(0) + 320, loc_ar(1) + 344) = "5279CE" Then 
+    					Call moveto_lrclick_delay(loc_ar(0) + 320, loc_ar(1) + 344, 0, 1000)
+    				End If
+    			End If
+    		Next
+    	Next
+    	Call altn("O",1000)
+    Next
+    Call clickwindow_n(1)
+End Function
+
 //卖活力
 Function sell_hl()
 	n = 0
@@ -580,7 +613,7 @@ Function sell_hl()
     	Call clickwindow_n(n)
     	loc_ar = win_location(n)
     	Call altn("W", 3000)
-    	Call moveto_lrclick_delay_opposite(329, 522, 0, 1000, n)
+    	Call moveto_lrclick_delay_opposite(305, 522, 0, 1000, n)
     	For 20
     		Call moveto_lrclick_delay_opposite(329,485, 0, 500, n)
     	Next
@@ -682,38 +715,6 @@ Sub _cleandetail()
         Goto start
     End If
 End Sub
-
-//卖神武币物品
-Function _sell_swb()
-    n = 0
-    For 5
-    	n=n+1
-    	Call clickwindow_n(n)
-    	Call altn("O",3000)
-    	loc_ar = win_location(n)
-    	xx = 525
-    	yy = 162
-    	j=-1
-    	For 7
-    		j = j + 1
-    		y = yy + 48 * j
-    		i = - 1
-    		For 5
-    			i=i+1
-    			x = xx + 48 * i
-    			If GetPixelColor(loc_ar(0) + x, loc_ar(1) + y) = "B5B47F" Then 
-    			Else 
-    				Call moveto_lrclick_delay(loc_ar(0) + x, loc_ar(1) + y, 1, 1000)
-    				If GetPixelColor(loc_ar(0) + 320, loc_ar(1) + 344) = "5279CE" Then 
-    					Call moveto_lrclick_delay(loc_ar(0) + 320, loc_ar(1) + 344, 0, 1000)
-    				End If
-    			End If
-    		Next
-    	Next
-    	Call altn("O",1000)
-    Next
-    Call clickwindow_n(1)
-End Function
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~战斗~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1273,9 +1274,9 @@ Sub gotofb()
     End If
 
     //打开副本对话框
-    Call moveto_lrclick_delay(w1_x-33+364, w1_y-14+312,0,1500)
+    Call moveto_lrclick_delay(w1_x-33+364, w1_y-14+312,0,3000)
     Call clicktalking()
-    Delay 100
+    Delay 500
     MoveTo w1_x-33+400, w1_y-14+300
 
     //看到副本入口
@@ -1376,10 +1377,7 @@ Sub dealfb()
         Goto start
     End If
     //进入战斗状态
-    res=zdzt()
-    If res = 1 Then 
-        Call obox()
-    End If
+    Call zdzt()
     //离开副本
     FindPic 239,280,605,424,"Attachment:\qx.bmp",0.9,intX,intY
     If intX > 0 And intY > 0 Then 
@@ -1394,6 +1392,9 @@ Sub dealfb()
         End If
         Goto endd
     End If
+    Delay 100
+    //开宝箱
+    Call obox()
     //点击对话框
     res=clicktalks(1)
     If res = 1 Then 
@@ -1540,7 +1541,7 @@ Sub all_fb()
     Call dealfb()
     If issell = 1 Then 
     	Call clean()
-    	Call sell_all()
+    	Call sell_swb()
     End If
     Goto start
     
@@ -1684,11 +1685,9 @@ End Sub
 
 //点击对话框的话，捉鬼专用
 Function clicktalking_zg()
-    clicktalking = 0
-    FindColor 287,323,530,447,"FFFF00",intX,intY
+    FindColor 287,340,381,429,"FFFF00",intX,intY
     If intX > 0 And intY > 0 Then 
         Call moveto_lrclick_delay(intX, intY, 0, 1000)
-        clicktalking=1
     End If
     Delay 100
 End Function
@@ -1764,6 +1763,7 @@ Sub all_zg()
             Call takeshuang_tips()
             Goto start
         End If
+        Call clicktalking_zg()
         Call clicktask()
         Call dianqmx_tips()
         Delay 1500
@@ -1991,7 +1991,7 @@ Sub gotofy()
         Call godetail(547, 154)
     End If
 */ 
-/*  */    
+/*
     //去北冥80
     XY=Plugin.Color.FindMutiColor(0,0,200,100,"97F3F7","0|3|97F3F7,-4|9|97F3F7,-5|9|97F3F7,0|10|97F3F7,0|7|97F3F7,0|4|97F3F7,1|4|97F3F7,3|3|97F3F7,7|1|97F3F7,7|2|97F3F7,18|1|97F3F7,18|2|97F3F7,4|10|97F3F7,2|11|97F3F7",1)
     MyArray = Split(XY, "|")
@@ -2006,8 +2006,8 @@ Sub gotofy()
         Call dianqmx_tips()
         Call godetail(245, 141)
     End If
-     
-/*
+*/      
+/**/
     //去琉璃90
     XY = Plugin.Color.FindMutiColor(0, 0, 200, 100, "97F3F7", "0|4|97F3F7,14|4|97F3F7,24|3|97F3F7,32|3|97F3F7,43|6|97F3F7,49|10|97F3F7,56|8|97F3F7,62|7|97F3F7,80|9|97F3F7,75|9|97F3F7,69|9|97F3F7,86|10|97F3F7,92|10|97F3F7,92|2|97F3F7,84|1|97F3F7", 1)
     MyArray = Split(XY, "|")
@@ -2024,7 +2024,7 @@ Sub gotofy()
         Call godetail(239, 431)
         Call godetail(223, 234)
     End If
-*/
+
 /*
     //去寒冰一100
     XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|1|97F3F7,11|0|97F3F7,11|1|97F3F7,14|9|97F3F7,15|6|97F3F7,17|2|97F3F7,19|2|97F3F7,18|6|97F3F7,21|6|97F3F7,21|-1|97F3F7,21|10|97F3F7,25|8|97F3F7,28|1|97F3F7,30|0|97F3F7,37|0|97F3F7,30|3|97F3F7,29|8|97F3F7,38|9|97F3F7,42|4|97F3F7,48|4|97F3F7,53|4|97F3F7",1)
@@ -2500,7 +2500,7 @@ End Function
 Sub all_dy()
 	doingmode = 8
 
-    //Call goto_dy()
+    Call goto_dy()
     
     iskbx=0
     isxxx = 0
