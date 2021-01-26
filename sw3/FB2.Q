@@ -50,12 +50,12 @@ Sub selectfb()
     search100=1
     //Call search_fb("Attachment:\100fb.bmp")
     search100=0
-    Call search_fb("Attachment:\90fb.bmp")
     //Call search_fb("Attachment:\80fb.bmp")
+    //Call search_fb("Attachment:\90fb.bmp")
     oksell=0
     //Call search_fb("Attachment:\70fb.bmp")
-    Call search_fb("Attachment:\60fb.bmp")
-    //Call search_fb("Attachment:\50fb.bmp")
+    //Call search_fb("Attachment:\60fb.bmp")
+    Call search_fb("Attachment:\50fb.bmp")
 End Sub
 
 //激活
@@ -75,28 +75,27 @@ End Function
 
 //~~~~~~~~~~~~~~~初始化~~~~~~~~~~~~~~~
 Call init()
-/*
-//~~~~~~~~~~~~~~~钓鱼~~~~~~~~~~~~~~~
-Call all_dy()
 
+//~~~~~~~~~~~~~~~钓鱼~~~~~~~~~~~~~~~
+//Call all_dy()
+/*
 //~~~~~~~~~~~~~~~副本~~~~~~~~~~~~~~~
 Call all_fb()
 
+
 //~~~~~~~~~~~~~~~灵狐~~~~~~~~~~~~~~~
 Call all_lh()
-
 //~~~~~~~~~~~~~~~边境~~~~~~~~~~~~~~~
 Call all_bj()
-
 //~~~~~~~~~~~~~~~旗包~~~~~~~~~~~~~~~
 Call all_qb()
-
 //~~~~~~~~~~~~~~~~~换修、卖活力、卖全部~~~~~~~~~~~~~~~~~
 Call clean()
-Call all_huanxiu()*/
+Call all_huanxiu()
 Call sell_hl()
-Call sell_all()
-
+//Call sell_all()
+Call sell_xj()
+*/
 /*
 //~~~~~~~~~~~~~~~~~答题~~~~~~~~~~~~~~~~~
 Call all_answer()
@@ -105,18 +104,19 @@ Call all_fy()
 //~~~~~~~~~~~~~~~捉鬼~~~~~~~~~~~~~~~
 Call all_zg()
 //~~~~~~~~~~~~~~~卷宗~~~~~~~~~~~~~~~
+Call sell_all()
 Call handup_jz()
+*/
+/*
+//~~~~~~~~~~~~~~~~~转转乐~~~~~~~~~~~~~~~~~
+Call all_zzl()
+Call sell_all()
 */
 //~~~~~~~~~~~~~~~~~关机~~~~~~~~~~~~~~~~~
 //Call close_computer()
 
 
 
-
-
-//~~~~~~~~~~~~~~~~~转转乐~~~~~~~~~~~~~~~~~
-//Call all_zzl()
-//Call sell_all()
 //~~~~~~~~~~~~~~~蛮洞~~~~~~~~~~~~~~~
 //Call all_md()
 
@@ -162,7 +162,7 @@ Sub init()
     w5_x = 0
     w5_y = 0
     isaddlan = 1
-    isaddzc = 1
+    isaddzc = 0
     doingmode = 0 //fb1,qb2,zg3,bj4,md5,fy6,lh7,dy8
     Call kfs()
     
@@ -550,7 +550,7 @@ Function sell_xj()
     	End If
     	Call moveto_lrclick_delay(loc_ar(0) + 710, loc_ar(1) + 136,0,1000)
     	xx = 472
-    	yy = 169
+    	yy = 168
     	j=-1
     	KeyDown "Shift", 1
     	For 7
@@ -582,7 +582,7 @@ Function sell_swb()
     	Call altn("O",3000)
     	loc_ar = win_location(n)
     	xx = 525
-    	yy = 162
+    	yy = 161
     	j=-1
     	For 7
     		j = j + 1
@@ -594,7 +594,7 @@ Function sell_swb()
     			If GetPixelColor(loc_ar(0) + x, loc_ar(1) + y) = "B5B47F" Then 
     			Else 
     				Call moveto_lrclick_delay(loc_ar(0) + x, loc_ar(1) + y, 1, 1000)
-    				If GetPixelColor(loc_ar(0) + 320, loc_ar(1) + 344) = "5279CE" Then 
+    				If GetPixelColor(loc_ar(0) + 320, loc_ar(1) + 344) = "4F78CB" Then 
     					Call moveto_lrclick_delay(loc_ar(0) + 320, loc_ar(1) + 344, 0, 1000)
     				End If
     			End If
@@ -908,7 +908,7 @@ Function buy_lan()
 		Call altn("E", 3000)
 		loc_ar = win_location(n)
 		xx = loc_ar(0)+373
-		yy = loc_ar(1)+91
+		yy = loc_ar(1)+90
 		k=0
 		j=-1
 		For 8
@@ -1121,7 +1121,7 @@ Function _open_windows()
 	//打开1个框等待风扇
 	If iskfs = 1 Then 
 		Call login(1)
-		While GetPixelColor(679, 274) <> "2525BB"
+		While GetPixelColor(679, 272) <> "2525BB"
 			Delay 1000
 		Wend
 		Delay 8000
@@ -1147,18 +1147,26 @@ Function clickcharater(n)
 		Case 1
 			//PT
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"40F4FF","11|0|40F4FF,10|10|3FF0FB,0|10|3BD8E5,15|10|40F4FF,15|-1|3FF1FC,26|0|39D2DF,25|10|3FF0FB,31|10|3CE1ED,40|10|3EEEF9,41|0|3EEBF7,30|0|3EEBF7,45|0|40F4FF,45|5|40F4FF,45|10|40F4FF,48|5|40F4FF,51|6|40F4FF,55|10|40F4FF,56|1|3FF2FD",1)
+			//FM
+			//XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"40F4FF","0|1|40F4FF,-1|2|40F4FF,0|9|40F4FF,4|7|40F4FF,2|4|40F4FF,7|5|40F4FF,15|-1|40F4FF,24|0|40F4FF,24|6|40F4FF,23|9|40F4FF",1)
 		Case 2
 			//DF
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"40F4FF","0|7|40F4FF,4|9|40F4FF,8|9|40F4FF,11|4|40F4FF,15|0|40F4FF,16|9|3EECF7,25|9|3FF0FB,26|0|40F4FF,31|-1|40F4FF,31|5|40F4FF,36|9|40F4FF,39|5|40F4FF,40|0|3CE2EE,48|-1|40F4FF,55|-1|40F4FF,55|5|40F4FF,47|5|3EE9F5",1)
 		Case 3
 			//PS
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"40F4FF","0|3|40F4FF,-1|8|40F4FF,2|10|40F4FF,6|10|40F4FF,8|8|40F4FF,8|3|3FF1FC,15|3|40F4FF,15|7|40F4FF,20|10|40F4FF,21|3|40F4FF,33|3|3CE0EC,36|3|3FF1FC,36|9|40F4FF,36|-1|40F4FF",1)
+			//FC
+			//XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"40F4FF","0|2|40F4FF,0|6|40F4FF,0|10|40F4FF,5|11|40F4FF,7|8|40F4FF,12|3|40F4FF,21|1|40F4FF,17|7|40F4FF,17|11|40F4FF,29|3|40F4FF,34|5|40F4FF",1)
 		Case 4
 			//WM
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"36BECC","4|1|3FF0FB,3|5|3CE2EE,0|11|3FF3FE,7|11|40F4FF,10|9|3FEFFA,15|7|40F4FF,18|11|40F4FF,24|10|40F4FF,23|7|3FF2FD,24|1|40F4FF,18|0|3FF3FE,32|0|3EECF8,31|5|3FF2FD,31|11|40F4FF,38|11|40F4FF,40|6|40F4FF,40|2|3EEEF9",1)
+			//WS
+			//XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"3BDAE7","4|0|3FF1FC,10|0|3BDBE7,3|6|40F4FF,1|9|3FF2FD,9|9|40F4FF,16|9|3FEFFA,16|2|3FF3FE,25|2|3FF1FD,25|9|3EECF7",1)
 		Case 5
 			//MW
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"3EEAF6","3|2|40F4FF,2|6|3FF1FD,4|9|3FEFFA,9|7|40F4FF,16|4|35B9C7,16|0|40F4FF,24|0|40F4FF,14|10|3AD3E0,25|10|3AD4E1,29|9|3FF1FC,33|9|3EECF7,38|9|3EEEF9,34|-1|3BD9E5",1)
+			//WS
+			//XY=Plugin.Color.FindMutiColor(loc_ar(0) + 138, loc_ar(1) + 219,loc_ar(0) + 604, loc_ar(1) + 488,"3BDAE7","4|0|3FF1FC,10|0|3BDBE7,3|6|40F4FF,1|9|3FF2FD,9|9|40F4FF,16|9|3FEFFA,16|2|3FF3FE,25|2|3FF1FD,25|9|3EECF7",1)
 	End Select
 	MyArray = Split(XY, "|")
     X = CInt(MyArray(0)) : Y = CInt(MyArray(1))
@@ -1187,11 +1195,16 @@ Function _login_detail()
 		//下拉框
 		Call moveto_lrclick_delay(loc_ar(0) + 504, loc_ar(1) + 297, 0, 2000)
 		If n = 1 Then 
+		//If n = 1 or n = 5 Then 
 			//a6@163
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 291, loc_ar(1) + 278,loc_ar(0) + 518, loc_ar(1) + 434,"F3F2ED","69|0|FFFFFF,72|0|FFFFFF,68|4|FFFFFF,73|5|FAFAF8,73|9|FEFEFE,78|3|FEFEFE,81|1|FFFFFF,81|4|FEFEFE,83|7|FFFFFF,86|6|FFFFFF,85|10|F6F5F1,92|8|FFFFFF,92|5|FFFFFF,92|1|FFFFFF,90|1|F8F7F4,99|0|FEFEFD,96|3|FFFFFF,96|7|FFFFFF,102|8|F8F8F5,106|9|FFFFFF,111|8|FBFAF8,109|5|FFFFFF,108|0|FEFEFD",1)
+			//6@qq
+			//XY=Plugin.Color.FindMutiColor(loc_ar(0) + 291, loc_ar(1) + 278,loc_ar(0) + 518, loc_ar(1) + 434,"F3F2ED","1|0|FEFEFD,-2|4|FFFFFF,4|7|FFFFFF,86|6|FFFFFF,89|6|FEFEFE,89|7|FFFFFF,89|8|FFFFFF,94|9|FFFFFF,97|9|FFFFFF,102|9|FFFFFF,102|10|FFFFFF",1)
 		Else 
 			//a61@163
 			XY=Plugin.Color.FindMutiColor(loc_ar(0) + 291, loc_ar(1) + 278,loc_ar(0) + 518, loc_ar(1) + 434,"F3F2ED","69|0|FFFFFF,72|0|FFFFFF,68|4|FFFFFF,71|4|F8F7F4,73|5|FAFAF8,73|9|FEFEFE,80|9|FFFFFF,80|5|FFFFFF,80|1|FFFFFF,78|1|F8F7F4,85|3|FEFEFE,88|4|FEFEFE,90|7|FFFFFF,87|7|FBFAF8,92|10|F6F5F1,99|9|FFFFFF,99|6|FFFFFF,99|1|FFFFFF,97|1|F8F7F4,103|5|FFFFFF,116|5|FFFFFF",1)
+			//33@qq
+			//XY=Plugin.Color.FindMutiColor(loc_ar(0) + 291, loc_ar(1) + 278,loc_ar(0) + 518, loc_ar(1) + 434,"FEFEFD","-2|1|FEFEFE,1|5|FFFFFF,10|5|FFFFFF,98|8|FFFFFF,103|9|FFFFFF,106|7|FFFFFF,111|9|FFFFFF,107|5|FFFFFF,103|5|FFFFFF",1)
 		End If
 		MyArray = Split(XY, "|")
 		X = CInt(MyArray(0)) : Y = CInt(MyArray(1))
@@ -1214,14 +1227,14 @@ Function _logined_thing()
     Call clickwindow_n(1)
 	loc_ar = win_location(1)
 	//打开邮件
-	If GetPixelColor(loc_ar(0) + 727, loc_ar(1) + 182) = "C2C154" Then 
+	If GetPixelColor(loc_ar(0) + 727, loc_ar(1) + 181) = "C2C154" Then 
 		Call moveto_lrclick_delay(loc_ar(0) + 713, loc_ar(1) + 198, 0, 2000)
 		Call moveto_lrclick_delay(loc_ar(0) + 562, loc_ar(1) + 151, 1, 2000)
 	End If
 	//组队
 	Call altn("V", 3000)
 	Call moveto_lrclick_delay(loc_ar(0) + 424, loc_ar(1) + 107, 0, 2000)
-	Call altn("V", 1000)
+	Call altn("V", 5000)
 	iszd=1
 	Call openclose_npc(1)
 	Call moveto_lrclick_delay(loc_ar(0) + 586, loc_ar(1) + 221, 0, 2000)
@@ -1390,6 +1403,8 @@ Sub dealfb()
         If res = 1 Then 
             Goto lefted
         End If
+    	havefb = 0
+    	roll=0
         Goto endd
     End If
     Delay 100
@@ -1721,6 +1736,11 @@ Sub all_zg()
 
     //自动战斗改为雷灵决
     //Call change_skill(1)
+    //自动战斗改为修罗追魂
+    Call clickwindow_n(2)
+    Call ctrla()
+    Delay 1000
+    Call change_skill(4)
 
     Rem start
     Call clickwindow_n(1)
@@ -1849,11 +1869,13 @@ Sub all_bj()
     isboss = 0
     Call clickwindow_n(1)
     Delay 500
+    Goto aaa
     Call alty(1)
     FindPic 0,0,765,358,"Attachment:\bj.bmp",0.9,intX,intY
     If intX > 0 And intY > 0 Then 
         Call alty(0)
         Call gotobj()
+        Rem aaa
         Call openclose_npc(1)
         ccoun=0
         Rem clickbjnpc
@@ -1969,10 +1991,10 @@ End Sub
 
 //打开地图
 Sub gotofy()
-/*    //去地府一/60
-    //XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|4|97F3F7,0|9|97F3F7,4|11|97F3F7,9|11|97F3F7,8|7|97F3F7,14|6|97F3F7,18|9|97F3F7,22|6|97F3F7,28|5|97F3F7,28|9|97F3F7,34|11|97F3F7,34|6|97F3F7,34|2|97F3F7,37|4|97F3F7,41|2|97F3F7,48|1|97F3F7,42|10|97F3F7,51|9|97F3F7,55|5|97F3F7,59|5|97F3F7,62|5|97F3F7,66|5|97F3F7,70|5|97F3F7",1)
+/**/    //去地府一/60
+    XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|4|97F3F7,0|9|97F3F7,4|11|97F3F7,9|11|97F3F7,8|7|97F3F7,14|6|97F3F7,18|9|97F3F7,22|6|97F3F7,28|5|97F3F7,28|9|97F3F7,34|11|97F3F7,34|6|97F3F7,34|2|97F3F7,37|4|97F3F7,41|2|97F3F7,48|1|97F3F7,42|10|97F3F7,51|9|97F3F7,55|5|97F3F7,59|5|97F3F7,62|5|97F3F7,66|5|97F3F7,70|5|97F3F7",1)
     //去地府三/70
-    XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|4|97F3F7,0|8|97F3F7,5|11|97F3F7,9|11|97F3F7,9|7|97F3F7,14|6|97F3F7,22|6|97F3F7,28|6|97F3F7,34|4|97F3F7,44|1|97F3F7,51|10|97F3F7,56|1|97F3F7,60|1|97F3F7,58|1|97F3F7,63|1|97F3F7,65|1|97F3F7,70|5|97F3F7,70|2|97F3F7,77|3|97F3F7,77|11|97F3F7",1)
+    //XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|4|97F3F7,0|8|97F3F7,5|11|97F3F7,9|11|97F3F7,9|7|97F3F7,14|6|97F3F7,22|6|97F3F7,28|6|97F3F7,34|4|97F3F7,44|1|97F3F7,51|10|97F3F7,56|1|97F3F7,60|1|97F3F7,58|1|97F3F7,63|1|97F3F7,65|1|97F3F7,70|5|97F3F7,70|2|97F3F7,77|3|97F3F7,77|11|97F3F7",1)
     MyArray = Split(XY, "|")
     X = CInt(MyArray(0)): Y = CInt(MyArray(1))
     If X < 0 And Y < 0 Then
@@ -1987,10 +2009,10 @@ Sub gotofy()
         Call godetail(592, 186)
          
         //去地府三
-        Call godetail(547, 154)
-        Call godetail(547, 154)
+        //Call godetail(547, 154)
+        //Call godetail(547, 154)
     End If
-*/ 
+ 
 /*
     //去北冥80
     XY=Plugin.Color.FindMutiColor(0,0,200,100,"97F3F7","0|3|97F3F7,-4|9|97F3F7,-5|9|97F3F7,0|10|97F3F7,0|7|97F3F7,0|4|97F3F7,1|4|97F3F7,3|3|97F3F7,7|1|97F3F7,7|2|97F3F7,18|1|97F3F7,18|2|97F3F7,4|10|97F3F7,2|11|97F3F7",1)
@@ -2007,7 +2029,7 @@ Sub gotofy()
         Call godetail(245, 141)
     End If
 */      
-/**/
+/*
     //去琉璃90
     XY = Plugin.Color.FindMutiColor(0, 0, 200, 100, "97F3F7", "0|4|97F3F7,14|4|97F3F7,24|3|97F3F7,32|3|97F3F7,43|6|97F3F7,49|10|97F3F7,56|8|97F3F7,62|7|97F3F7,80|9|97F3F7,75|9|97F3F7,69|9|97F3F7,86|10|97F3F7,92|10|97F3F7,92|2|97F3F7,84|1|97F3F7", 1)
     MyArray = Split(XY, "|")
@@ -2024,7 +2046,7 @@ Sub gotofy()
         Call godetail(239, 431)
         Call godetail(223, 234)
     End If
-
+*/
 /*
     //去寒冰一100
     XY=Plugin.Color.FindMutiColor(0, 0, 200, 100,"97F3F7","0|1|97F3F7,11|0|97F3F7,11|1|97F3F7,14|9|97F3F7,15|6|97F3F7,17|2|97F3F7,19|2|97F3F7,18|6|97F3F7,21|6|97F3F7,21|-1|97F3F7,21|10|97F3F7,25|8|97F3F7,28|1|97F3F7,30|0|97F3F7,37|0|97F3F7,30|3|97F3F7,29|8|97F3F7,38|9|97F3F7,42|4|97F3F7,48|4|97F3F7,53|4|97F3F7",1)
@@ -2936,14 +2958,14 @@ Function all_huanxiu()
     	Call moveto_lrclick_delay_opposite(540, 370, 0, 2000, n)
     	For 5
     		Call clicktalking_hx(loc_ar)
-    		//Call moveto_lrclick_delay_opposite(310, 370, 0, 1000, n)
-    		Call clicktalks(1)
     	Next
     	Delay 1000
     	If n > 1 Then 
     		Call moveto_lrclick_delay_opposite(258, 53, 0, 2000, n)
     	End If
     Next
+    Call clickwindow_n(1)
+    Call clicktalks(1)
 End Function
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~转转乐~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
